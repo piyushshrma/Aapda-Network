@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Reporting System</title>
+    <link rel="stylesheet" href="./style_victim.css">
+</head>
+<body>
+    <h1>Emergency Reporting System</h1>
+    <div class="button-container">
+        <button onclick="openForm('high')">High</button>
+        <button onclick="openForm('low')">Low</button>
+    </div>
+
+    <div id="formContainer" class="form-container" style="display: none;">
+        <!-- Form content will be dynamically replaced here -->
+    </div>
+
+    <script>
+        function openForm(urgency) {
+            var formContainer = document.getElementById('formContainer');
+            var formHtml = '';
+
+            if (urgency === 'high') {
+                formHtml = `
+                    <div class="container">
+                        <h2>Type of Emergency</h2>
+                        <label>
+                            <input type="radio" name="emergencyType" value="fire"> Fire <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="emergencyType" value="earthquake"> Earthquake<br>
+                        </label>
+                        <label>
+                            <input type="radio" name="emergencyType" value="medical"> Medical Emergency<br>
+                        </label>
+                        <label>
+                            <input type="radio" name="emergencyType" value="animal_attack"> Animal Attack<br>
+                        </label>
+                        <div class="form-section">
+                            <h2>Upload Photo</h2>
+                            <input type="file" name="photo" required>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </div>
+                `;
+            } else if (urgency === 'low') {
+                formHtml = `
+                    <div class="container">
+                        <h2>Low Urgency Form</h2>
+                        <form id="lowUrgencyForm">
+                            <!-- Low urgency form fields go here -->
+                            <label for="name">Name:</label><br />
+                            <input type="text" id="name" name="name" required />
+
+                            <label for="contact">Contact Information:</label><br />
+                            <input type="text" id="contact" name="contact" required />
+
+                            <label for="location">Location:</label><br />
+                            <input type="text" id="location" name="location" required readOnly />
+
+                            <label for="need">Type of Need:</label><br />
+                            <select id="need" name="need">
+                                <option value="food">Food</option>
+                                <option value="water">Water</option>
+                                <option value="shelter">Shelter</option>
+                                <option value="medical">Medical Attention</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="hygiene">Hygiene Products</option>
+                                <option value="other">Other</option>
+                            </select>
+
+                            <label for="description">Description:</label><br />
+                            <textarea id="description" name="description" required></textarea>
+
+                            <label for="people">Number of People Impacted:</label><br />
+                            <input type="number" id="people" name="people" required />
+                            <br /><br />
+
+                            <label for="criticalMedical">Does anyone require critical medical attention?</label><br />
+                            <input type="radio" id="criticalMedicalYes" name="criticalMedical" value="yes" />
+                            <label for="criticalMedicalYes">Yes</label>
+                            <input type="radio" id="criticalMedicalNo" name="criticalMedical" value="no" />
+                            <label for="criticalMedicalNo">No</label>
+                            <br /><br />
+
+                            <label for="urgency">Urgency Level:</label><br />
+                            <input type="text" id="urgency" name="urgency" value="${urgency}" readOnly />
+
+                            <label for="photo">Upload Photo:</label><br />
+                            <input type="file" id="photo" name="photo" />
+                            <br /><br />
+                            <center><button type="submit">Submit</button></center>
+                        </form>
+                    </div>
+                `;
+            }
+
+            formContainer.innerHTML = formHtml;
+            formContainer.style.display = 'block';
+        }
+
+        function submitForm() {
+            // Handle form submission as needed
+        }
+    </script>
+</body>
+</html>
