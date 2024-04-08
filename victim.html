@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Reporting System</title>
+    <link rel="icon" href="img/core-img/AapdaNet.ico">
     <link rel="stylesheet" href="./style_victim.css">
 </head>
 <body>
@@ -42,6 +43,11 @@
                             <h2>Upload Photo</h2>
                             <input type="file" name="photo" required>
                         </div>
+                        <div class="form-section">
+                            <h2>Location</h2>
+                            <button onclick="fetchLocation()">Get My Location</button>
+                            <input type="text" name="location" id="location" placeholder="Your location" required>
+                        </div>
                         <button type="submit">Submit</button>
                     </div>
                 `;
@@ -57,8 +63,11 @@
                             <label for="contact">Contact Information:</label><br />
                             <input type="text" id="contact" name="contact" required />
 
-                            <label for="location">Location:</label><br />
-                            <input type="text" id="location" name="location" required readOnly />
+                            <div class="form-section">
+                                <h2>Location</h2>
+                                <button onclick="fetchLocation()">Get My Location</button>
+                                <input type="text" name="location" id="location" placeholder="Your location" required>
+                            </div>
 
                             <label for="need">Type of Need:</label><br />
                             <select id="need" name="need">
@@ -99,6 +108,19 @@
 
             formContainer.innerHTML = formHtml;
             formContainer.style.display = 'block';
+        }
+
+        function fetchLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var locationInput = document.getElementById("location");
+            locationInput.value = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
         }
 
         function submitForm() {
