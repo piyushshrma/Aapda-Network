@@ -30,10 +30,10 @@ To get started with Aapda Network, simply open the `index.html` file in your web
 
 For any inquiries or support, please contact:
 
-- **Ayush Goyal:** [Contact](tel:+918767593598)
-- **Kunal Pusdekar:** [Contact](tel:+918668748821)
-- **Piyush Sharma:** [Contact](tel:+918668379551)
-- **Divyansh Kumbhat:** [Contact](tel:+919561126268)
+- **Ayush Goyal:** tel:+918767593598
+- **Kunal Pusdekar:** tel:+918668748821
+- **Piyush Sharma:** tel:+918668379551
+- **Divyansh Kumbhat:** tel:+919561126268
 
 ## Acknowledgments
 
